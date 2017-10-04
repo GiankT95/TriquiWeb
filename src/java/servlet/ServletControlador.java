@@ -50,7 +50,7 @@ public class ServletControlador extends HttpServlet {
             System.out.println(request.getParameter(""+i));
         }
         
-        processRequest(request, response);
+       request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
 }

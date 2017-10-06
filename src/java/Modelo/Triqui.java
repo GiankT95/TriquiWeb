@@ -12,11 +12,21 @@ package Modelo;
 public class Triqui {
 
     private final String[][] tablero;
+    public static Triqui instance = null;
 
     public Triqui() {
 
         this.tablero = new String[3][3];
         
+    }
+    
+    public static Triqui instance() {
+        
+        if(instance == null){
+            instance = new Triqui();
+        }
+        
+        return instance;
     }
 
     public void asignarJugada(int pPosicion, String pJugada) throws Exception {

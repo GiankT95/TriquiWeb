@@ -5,8 +5,11 @@
  */
 package servlet;
 
+import Modelo.Triqui;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ServletControlador extends HttpServlet {
 
+    
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -46,9 +51,18 @@ public class ServletControlador extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        for(int i=1; i<=9; i++){
-            System.out.println(request.getParameter(""+i));
+
+        try {
+            
+            Triqui.instance.asignarJugada(0, request.getParameter("1"));
+            
+            
+            
+        } catch (Exception ex) {
+            
         }
+        
+       request.setAttribute("triki", Triqui.instance());
         
        request.getRequestDispatcher("index.jsp").forward(request, response);
     }

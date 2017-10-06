@@ -19,6 +19,9 @@ public class Main {
         Triqui triki = new Triqui();
         
         triki.asignarJugada(9, "x");
+        triki.asignarJugada(5, "o");
+        triki.asignarJugada(4, "o");
+        triki.asignarJugada(6, "o");
         
         triki.mostrarTablero();
         

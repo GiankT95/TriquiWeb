@@ -5,6 +5,8 @@
  */
 package Modelo;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Fuller 101
@@ -16,15 +18,25 @@ public class Main {
      */
     public static void main(String[] args) throws Exception {
         
-        Triqui triki = new Triqui();
+        String humano = "x";
+        //boolean jugando = true;
         
-        triki.asignarJugada(9, "x");
-        triki.asignarJugada(5, "o");
-        triki.asignarJugada(4, "o");
-        triki.asignarJugada(6, "o");
-        
-        triki.mostrarTablero();
-        
+        while(Triqui.instance().hayGanador() == false){
+            
+            int posicion = Integer.parseInt(JOptionPane.showInputDialog("Seleccione posicion donde va a jugar"));
+            Triqui.instance().asignarJugada(posicion, humano);
+            
+            Triqui.instance().verificarGanador(humano);
+            Triqui.instance().verificarEmpate();
+            Triqui.instance().juegaMaquina();
+            
+            if(Triqui.instance().hayGanador() || Triqui.instance().hayEmpate()){
+                //jugando = false;
+                System.out.println("Juego terminado.");
+                System.exit(0);
+            }
+            
+        }
     }
     
 }

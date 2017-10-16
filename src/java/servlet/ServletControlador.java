@@ -21,8 +21,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ServletControlador extends HttpServlet {
 
-    
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -31,7 +29,7 @@ public class ServletControlador extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServletControlador</title>");            
+            out.println("<title>Servlet ServletControlador</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ServletControlador at " + request.getContextPath() + "</h1>");
@@ -46,25 +44,22 @@ public class ServletControlador extends HttpServlet {
         processRequest(request, response);
     }
 
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-
-        try {
-            
-            Triqui.instance.asignarJugada(0, request.getParameter("1"));
-            
-            
-            
-        } catch (Exception ex) {
-            
+        for(int i=0; i<=9; i++){
+            if(request.getParameter(""+i).equalsIgnoreCase("x") || request.getParameter(""+i).equalsIgnoreCase("o")){
+                try {
+                    Triqui.instance().asignarJugada(i, (String) request.getAttribute(""+i));
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
         }
-        
-       request.setAttribute("triki", Triqui.instance());
-        
-       request.getRequestDispatcher("index.jsp").forward(request, response);
+
+        request.setAttribute("triki", Triqui.instance().getTablero());
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
 }

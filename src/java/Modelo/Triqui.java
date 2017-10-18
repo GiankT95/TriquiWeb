@@ -32,10 +32,10 @@ public class Triqui {
         return instance;
     }
 
-    public void asignarJugada(int posicion, String jugador) throws Exception {
+    public void asignarJugada(int posicion, int jugador) throws Exception {
 
         switch (jugador) {
-            case "x":
+            case 1:
                 switch (posicion) {
                     case 1:
                         if (tablero[0][0] == 0) {
@@ -123,7 +123,7 @@ public class Triqui {
                         throw new Exception("Jugada invalida");
                 }
 
-            case "o":
+            case 2:
                 switch (posicion) {
                     case 1:
                         if (tablero[0][0] == 0) {
@@ -241,10 +241,10 @@ public class Triqui {
         return true;
     }
 
-    public void victoriaFilas(String jugador) {
+    public void victoriaFilas(int jugador) {
 
         switch (jugador) {
-            case "x":
+            case 1:
                 if (tablero[0][0] == 1 && tablero[0][1] == 1 && tablero[0][2] == 1) {
                     ganador = true;
                 }
@@ -258,7 +258,7 @@ public class Triqui {
                 }
                 break;
 
-            case "o":
+            case 2:
                 if (tablero[0][0] == 2 && tablero[0][1] == 2 && tablero[0][2] == 2) {
                     ganador = true;
                 }
@@ -274,10 +274,10 @@ public class Triqui {
         }
     }
 
-    public void victoriaColumnas(String jugador) {
+    public void victoriaColumnas(int jugador) {
         
         switch (jugador) {
-            case "x":
+            case 1:
                 if (tablero[0][0] == 1 && tablero[1][0] == 1 && tablero[2][0] == 1) {
                     ganador = true;
                 }
@@ -290,7 +290,7 @@ public class Triqui {
                     ganador = true;
                 }
                 break;
-            case "o":
+            case 2:
                 if (tablero[0][0] == 2 && tablero[1][0] == 2 && tablero[2][0] == 2) {
                     ganador = true;
                 }
@@ -306,11 +306,11 @@ public class Triqui {
         }
     }
 
-    public void victoriaDiagonales(String jugador) {
+    public void victoriaDiagonales(int jugador) {
 
         switch (jugador) {
 
-            case "x":
+            case 1:
                 if (tablero[0][0] == 1 && tablero[1][1] == 1 && tablero[2][2] == 1) {
                     ganador = true;
                 }
@@ -320,7 +320,7 @@ public class Triqui {
                 }
                 break;
                 
-            case "o":
+            case 2:
                 if (tablero[0][0] == 2 && tablero[1][1] == 2 && tablero[2][2] == 2) {
                     ganador = true;
                 }
@@ -332,7 +332,7 @@ public class Triqui {
         }
     }
 
-    public void verificarGanador(String jugador) {
+    public void verificarGanador(int jugador) {
 
         victoriaFilas(jugador);
         victoriaColumnas(jugador);
@@ -351,7 +351,7 @@ public class Triqui {
 
     public void jugarCentroPC() throws Exception {
         if (tablero[1][1] == 0) {
-            asignarJugada(5, "o");
+            asignarJugada(5, 2);
         }
     }
 
@@ -360,44 +360,44 @@ public class Triqui {
         if (((tablero[0][0] == 1) && (tablero[1][1] == 2) && (tablero[2][2] == 1) && (tablero[2][1] == 0) && (jugadaPC = false))
                 || ((tablero[0][2] == 1) && (tablero[1][1] == 2) && (tablero[2][0] == 1) && (jugadaPC = false))) {
 
-            asignarJugada(8, "o");
+            asignarJugada(8, 2);
         }
 
         if (((tablero[0][0] == 1) && (tablero[1][1] == 2) && (tablero[1][2] == 1) && (tablero[2][1] == 0) && (jugadaPC = false))
                 || ((tablero[1][2] == 1) && (tablero[1][1] == 2) && (tablero[2][0] == 1) && (tablero[2][1] == 0) && (jugadaPC = false))) {
 
-            asignarJugada(8, "o");
+            asignarJugada(8, 2);
         }
 
         if ((tablero[2][1] == 1) && (tablero[1][1] == 2) && (tablero[1][2] == 1) && (jugadaPC = false) && (tablero[0][2] == 0)) {
 
-            asignarJugada(3, "o");
+            asignarJugada(3, 2);
         }
         
         if ((tablero[2][2] == 1) && (tablero[1][1] == 1) && (tablero[0][0] == 2) && (jugadaPC = false) && (tablero[0][2] == 0)) {
 
-            asignarJugada(3, "o");
+            asignarJugada(3, 2);
         }
 
         if ((tablero[2][1] == 1) && (tablero[1][1] == 2) && (tablero[0][0] == 1) && (jugadaPC = false) && (tablero[2][0] == 0)) {
 
-            asignarJugada(7, "o");
+            asignarJugada(7, 2);
         }
 
         if (((tablero[0][1] == 1) && (tablero[1][1] == 2) && (tablero[2][2] == 1) && (jugadaPC = false) && (tablero[1][0] == 0))
                 || ((tablero[2][1] == 1) && (tablero[1][1] == 2) && (tablero[0][2] == 1) && (jugadaPC = false) && (tablero[1][0] == 0))) {
 
-            asignarJugada(4, "o");
+            asignarJugada(4, 2);
         }
 
         if ((tablero[1][0] == 1) && (tablero[1][1] == 2) && (tablero[2][2] == 1) && (jugadaPC = false) && (tablero[0][1] == 0)) {
 
-            asignarJugada(2, "o");
+            asignarJugada(2, 2);
         }
 
         if ((tablero[0][0] == 2) && (tablero[1][1] == 1) && (tablero[2][2] == 1) && (jugadaPC = false) && (tablero[2][0] == 0)) {
 
-            asignarJugada(7, "o");
+            asignarJugada(7, 2);
         }
 
     }
@@ -405,104 +405,104 @@ public class Triqui {
     public void buscarPeligroFilas() throws Exception {
 
         if (tablero[0][0] == 1 && tablero[0][1] == 1 && jugadaPC == false && tablero[0][2] == 0) {
-            asignarJugada(3, "o");
+            asignarJugada(3, 2);
         }
 
         if (tablero[0][0] == 1 && tablero[0][2] == 1 && jugadaPC == false && tablero[0][1] == 0) {
-            asignarJugada(2, "o");
+            asignarJugada(2, 2);
         }
 
         if (tablero[0][1] == 1 && tablero[0][2] == 1 && jugadaPC == false && tablero[0][0] == 0) {
-            asignarJugada(1, "o");
+            asignarJugada(1, 2);
         }
 
         if (tablero[1][0] == 1 && tablero[1][1] == 1 && jugadaPC == false && tablero[1][2] == 0) {
-            asignarJugada(6, "o");
+            asignarJugada(6, 2);
         }
 
         if (tablero[1][0] == 1 && tablero[1][2] == 1 && jugadaPC == false && tablero[1][1] == 0) {
-            asignarJugada(5, "o");
+            asignarJugada(5, 2);
         }
 
         if (tablero[1][1] == 1 && tablero[1][2] == 1 && jugadaPC == false && tablero[1][0] == 0) {
-            asignarJugada(4, "o");
+            asignarJugada(4, 2);
         }
 
         if (tablero[2][0] == 1 && tablero[2][1] == 1 && jugadaPC == false && tablero[2][2] == 0) {
-            asignarJugada(9, "o");
+            asignarJugada(9, 2);
         }
 
         if (tablero[2][0] == 1 && tablero[2][2] == 1 && jugadaPC == false && tablero[2][1] == 0) {
-            asignarJugada(8, "o");
+            asignarJugada(8, 2);
         }
 
         if (tablero[2][1] == 1 && tablero[2][2] == 1 && jugadaPC == false && tablero[2][0] == 0) {
-            asignarJugada(7, "o");
+            asignarJugada(7, 2);
         }
 
     }
 
     public void buscarPeligroColumnas() throws Exception {
         if (tablero[0][0] == 1 && tablero[1][0] == 1 && jugadaPC == false && tablero[2][0] == 0) {
-            asignarJugada(7, "o");
+            asignarJugada(7, 2);
         }
 
         if (tablero[0][0] == 1 && tablero[2][0] == 1 && jugadaPC == false && tablero[1][0] == 0) {
-            asignarJugada(4, "o");
+            asignarJugada(4, 2);
         }
 
         if (tablero[1][0] == 1 && tablero[2][0] == 1 && jugadaPC == false && tablero[0][0] == 0) {
-            asignarJugada(1, "o");
+            asignarJugada(1, 2);
         }
         
         if (tablero[0][1] == 1 && tablero[1][1] == 1 && jugadaPC == false && tablero[2][1] == 0) {
-            asignarJugada(8, "o");
+            asignarJugada(8, 2);
         }
 
         if (tablero[0][1] == 1 && tablero[2][1] == 1 && jugadaPC == false && tablero[1][1] == 0) {
-            asignarJugada(5, "o");
+            asignarJugada(5, 2);
         }
 
         if (tablero[1][1] == 1 && tablero[2][1] == 1 && jugadaPC == false && tablero[0][1] == 0) {
-            asignarJugada(2, "o");
+            asignarJugada(2, 2);
         }
         
         if (tablero[0][2] == 1 && tablero[1][2] == 1 && jugadaPC == false && tablero[2][2] == 0) {
-            asignarJugada(9, "o");
+            asignarJugada(9, 2);
         }
 
         if (tablero[0][2] == 1 && tablero[2][2] == 1 && jugadaPC == false && tablero[1][2] == 0) {
-            asignarJugada(6, "o");
+            asignarJugada(6, 2);
         }
 
         if (tablero[1][2] == 1 && tablero[2][2] == 1 && jugadaPC == false && tablero[0][2] == 0) {
-            asignarJugada(3, "o");
+            asignarJugada(3, 2);
         }
     }
     
     public void buscarPeligroDiagonales() throws Exception{
         if(tablero[0][0] == 1 && tablero[1][1] == 1 && jugadaPC == false && tablero[2][2] == 0){
-            asignarJugada(9, "o");
+            asignarJugada(9, 2);
         }
         
         if(tablero[0][0] == 1 && tablero[2][2] == 1 && jugadaPC == false && tablero[1][1] == 0){
-            asignarJugada(5, "o");
+            asignarJugada(5, 2);
         }
         
         if(tablero[1][1] == 1 && tablero[2][2] == 1 && jugadaPC == false && tablero[0][0] == 0){
-            asignarJugada(1, "o");
+            asignarJugada(1, 2);
         }
         
         if(tablero[0][2] == 1 && tablero[1][1] == 1 && jugadaPC == false && tablero[2][0] == 0){
-            asignarJugada(7, "o");
+            asignarJugada(7, 2);
         }
         
         if(tablero[0][2] == 1 && tablero[2][0] == 1 && jugadaPC == false && tablero[1][1] == 0){
-            asignarJugada(5, "o");
+            asignarJugada(5, 2);
         }
         
         if(tablero[1][1] == 1 && tablero[2][0] == 1 && jugadaPC == false && tablero[0][2] == 0){
-            asignarJugada(3, "o");
+            asignarJugada(3, 2);
         }
     }
     
@@ -515,89 +515,89 @@ public class Triqui {
     public void derrotarHumanoFilas() throws Exception{
         
         if(tablero[0][0] == 2 && tablero[0][1] == 2 && jugadaPC == false){
-            asignarJugada(3, "o");
+            asignarJugada(3, 2);
         }
         if(tablero[0][0] == 2 && tablero[0][2] == 2 && jugadaPC == false){
-            asignarJugada(2, "o");
+            asignarJugada(2, 2);
         }
         if(tablero[0][1] == 2 && tablero[0][2] == 2 && jugadaPC == false){
-            asignarJugada(1, "o");
+            asignarJugada(1, 2);
         }
         
         if(tablero[1][0] == 2 && tablero[1][1] == 2 && jugadaPC == false){
-            asignarJugada(6, "o");
+            asignarJugada(6, 2);
         }
         if(tablero[1][0] == 2 && tablero[1][2] == 2 && jugadaPC == false){
-            asignarJugada(5, "o");
+            asignarJugada(5, 2);
         }
         if(tablero[1][1] == 2 && tablero[1][2] == 2 && jugadaPC == false){
-            asignarJugada(4, "o");
+            asignarJugada(4, 2);
         }
         
         if(tablero[2][0] == 2 && tablero[2][1] == 2 && jugadaPC == false){
-            asignarJugada(9, "o");
+            asignarJugada(9, 2);
         }
         if(tablero[2][0] == 2 && tablero[2][2] == 2 && jugadaPC == false){
-            asignarJugada(8, "o");
+            asignarJugada(8, 2);
         }
         if(tablero[2][1] == 2 && tablero[2][2] == 2 && jugadaPC == false){
-            asignarJugada(7, "o");
+            asignarJugada(7, 2);
         }
     }
     
     public void derrotarHumanoColumnas() throws Exception{
         
         if(tablero[0][0] == 2 && tablero[1][0] == 2 && jugadaPC == false){
-            asignarJugada(7, "o");
+            asignarJugada(7, 2);
         }
         if(tablero[0][0] == 2 && tablero[2][0] == 2 && jugadaPC == false){
-            asignarJugada(4, "o");
+            asignarJugada(4, 2);
         }
         if(tablero[1][0] == 2 && tablero[2][0] == 2 && jugadaPC == false){
-            asignarJugada(1, "o");
+            asignarJugada(1, 2);
         }
         
         if(tablero[0][1] == 2 && tablero[1][1] == 2 && jugadaPC == false){
-            asignarJugada(8, "o");
+            asignarJugada(8, 2);
         }
         if(tablero[0][1] == 2 && tablero[2][1] == 2 && jugadaPC == false){
-            asignarJugada(5, "o");
+            asignarJugada(5, 2);
         }
         if(tablero[1][1] == 2 && tablero[2][1] == 2 && jugadaPC == false){
-            asignarJugada(2, "o");
+            asignarJugada(2, 2);
         }
         
         if(tablero[0][2] == 2 && tablero[1][2] == 2 && jugadaPC == false){
-            asignarJugada(9, "o");
+            asignarJugada(9, 2);
         }
         if(tablero[0][2] == 2 && tablero[2][2] == 2 && jugadaPC == false){
-            asignarJugada(6, "o");
+            asignarJugada(6, 2);
         }
         if(tablero[1][2] == 2 && tablero[2][2] == 2 && jugadaPC == false){
-            asignarJugada(3, "o");
+            asignarJugada(3, 2);
         }
     }
     
     public void derrotarHumanoDiagonales() throws Exception{
         
         if(tablero[0][0] == 2 && tablero[1][1] == 2 && jugadaPC == false){
-            asignarJugada(9, "o");
+            asignarJugada(9, 2);
         }
         if(tablero[0][0] == 2 && tablero[2][2] == 2 && jugadaPC == false){
-            asignarJugada(5, "o");
+            asignarJugada(5, 2);
         }
         if(tablero[1][1] == 2 && tablero[2][2] == 2 && jugadaPC == false){
-            asignarJugada(1, "o");
+            asignarJugada(1, 2);
         }
         
         if(tablero[0][2] == 2 && tablero[1][1] == 2 && jugadaPC == false){
-            asignarJugada(7, "o");
+            asignarJugada(7, 2);
         }
         if(tablero[0][2] == 2 && tablero[2][0] == 2 && jugadaPC == false){
-            asignarJugada(5, "o");
+            asignarJugada(5, 2);
         }
         if(tablero[1][1] == 2 && tablero[2][0] == 2 && jugadaPC == false){
-            asignarJugada(3, "o");
+            asignarJugada(3, 2);
         }
     }
     
@@ -612,7 +612,7 @@ public class Triqui {
             for (int fila = 0; fila < 3; fila++) {
                 for (int col = 0; col < 3; col++) {
                     if (tablero[fila][col] == 0 && jugadaPC == false) {
-                        asignarJugada(tiro, "o");
+                        asignarJugada(tiro, 2);
                         
                         fila = 4;
                         col = 4;
@@ -631,7 +631,7 @@ public class Triqui {
         forzarJugada();
             
         if(jugadaPC == true){
-            verificarGanador("o");
+            verificarGanador(2);
             jugadaPC = false;
         }
         

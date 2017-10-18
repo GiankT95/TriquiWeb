@@ -24,9 +24,9 @@ public class Main {
         while(Triqui.instance().hayGanador() == false){
             
             int posicion = Integer.parseInt(JOptionPane.showInputDialog("Seleccione posicion donde va a jugar"));
-            Triqui.instance().asignarJugada(posicion, humano);
+            Triqui.instance().asignarJugada(posicion, 1);
             
-            Triqui.instance().verificarGanador(humano);
+            Triqui.instance().verificarGanador(1);
             Triqui.instance().verificarEmpate();
             Triqui.instance().juegaMaquina();
             
